@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>เว็บทางการ SoftwareOK ถูกแฝงมัลแวร์ในตัวติดตั้ง Q-Dir และ DesktopOK | ข่าวไซเบอร์ง่ายๆ</title>
+<meta name="description" content="ไฟล์ติดตั้งโปรแกรมฟรียอดนิยม Q-Dir และ DesktopOK บนเว็บไซต์ทางการของ SoftwareOK ถูกสับเปลี่ยนเป็นเวอร์ชันที่มีมัลแวร์ควบคุมเครื่องระยะไกล (RAT) ซ่อนอยู่ ทั้งคนที่ดาวน์โหลดใหม่และคนที่กดอัปเดตโปรแกรมเดิมอาจโดนด้วย">
+<meta property="og:type" content="article">
+<meta property="og:title" content="เว็บทางการ SoftwareOK ถูกแฝงมัลแวร์ในตัวติดตั้ง Q-Dir และ DesktopOK">
+<meta property="og:description" content="ไฟล์ติดตั้งโปรแกรมฟรียอดนิยม Q-Dir และ DesktopOK บนเว็บไซต์ทางการของ SoftwareOK ถูกสับเปลี่ยนเป็นเวอร์ชันที่มีมัลแวร์ควบคุมเครื่องระยะไกล (RAT) ซ่อนอยู่ ทั้งคนที่ดาวน์โหลดใหม่และคนที่กดอัปเดตโปรแกรมเดิมอาจโดนด้วย">
+<meta property="og:image" content="https://pakawatw.github.io/thai-cybersec-news/images/2026-11-hackers-trojanize-official-q-dir-and.png">
+<meta property="og:url" content="https://pakawatw.github.io/thai-cybersec-news/news/2026-11-hackers-trojanize-official-q-dir-and.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><a href="../index.html" class="brand">🛡️ ข่าวไซเบอร์ง่ายๆ</a></header>
+<main class="article">
+  <div class="meta">
+    <span class="sev sev-high">ความรุนแรงสูง</span>
+    <span class="date">27 พ.ย. 2569</span>
+    <span class="tag">ซัพพลายเชน</span><span class="tag">มัลแวร์</span><span class="tag">Windows</span>
+  </div>
+  <h1>เว็บทางการ SoftwareOK ถูกแฝงมัลแวร์ในตัวติดตั้ง Q-Dir และ DesktopOK</h1>
+
+  <section class="tldr">
+    <h2>สรุปสั้นๆ</h2>
+    <p>ไฟล์ติดตั้งโปรแกรมฟรียอดนิยม Q-Dir และ DesktopOK บนเว็บไซต์ทางการของ SoftwareOK ถูกสับเปลี่ยนเป็นเวอร์ชันที่มีมัลแวร์ควบคุมเครื่องระยะไกล (RAT) ซ่อนอยู่ ทั้งคนที่ดาวน์โหลดใหม่และคนที่กดอัปเดตโปรแกรมเดิมอาจโดนด้วย</p>
+  </section>
+
+  <img class="card" src="../images/2026-11-hackers-trojanize-official-q-dir-and.png" alt="เว็บทางการ SoftwareOK ถูกแฝงมัลแวร์ในตัวติดตั้ง Q-Dir และ DesktopOK" width="1080" height="1080">
+
+  <section>
+    <h2>📰 เกิดอะไรขึ้น</h2>
+    <p>นักวิจัยจาก AhnLab บริษัทความปลอดภัยของเกาหลีใต้ พบว่าไฟล์ติดตั้งของ Q-Dir (โปรแกรมจัดการไฟล์แบบหลายหน้าต่าง) และ DesktopOK (โปรแกรมจำตำแหน่งไอคอนบนเดสก์ท็อป) ที่แจกบนเว็บไซต์ทางการของ SoftwareOK ถูกแก้ไขโดยคนร้าย</p><p>เวอร์ชันที่ยืนยันแล้วว่าถูกฝังมัลแวร์ คือ Q-Dir 12.85.0.0, 12.84.0.0, 12.83.0.0 และ DesktopOK 12.85.0.0, 12.82.0.0 ไฟล์อันตรายถูกส่งมาทั้งตอนดาวน์โหลดจากหน้าเว็บโดยตรง และตอนที่โปรแกรมเดิมในเครื่องอัปเดตตัวเอง</p><p>ตัวติดตั้งปลอมจะเปิดโปรแกรมจริงขึ้นมาให้ดูเหมือนปกติ แต่เบื้องหลังจะแอบดาวน์โหลดเครื่องมือ 7-Zip และแพ็กเกจมัลแวร์ที่เขียนด้วย Python มาติดตั้ง จากนั้นสร้าง Scheduled Task ที่ปลอมชื่อเป็น Microsoft Edge เพื่อให้มัลแวร์ทำงานทุกครั้งโดยไม่มีใครสังเกต</p><p>มัลแวร์ตัวนี้ให้คนร้ายสั่งรันคำสั่งบนเครื่อง รันโค้ด Python รับส่งไฟล์ จับภาพหน้าจอ และเก็บข้อมูลระบบได้ นอกจากนี้ยังตรวจว่าเครื่องติดตั้งโปรแกรมป้องกันไวรัสยี่ห้อใดบ้าง แล้วส่งข้อมูลกลับไปให้คนร้ายวางแผนโจมตีขั้นต่อไป ยังไม่ทราบว่าคนร้ายเข้าไปเปลี่ยนไฟล์บนเว็บได้อย่างไร</p>
+  </section>
+
+  
+  <section>
+    <h2>🔎 ข้อมูลเพิ่มเติมจากแหล่งอื่น</h2>
+    <p>รายงานต้นฉบับของ AhnLab (ASEC) ระบุว่า Scheduled Task ที่มัลแวร์สร้างมีชื่อ &#34;\UPnp\MicrosoftEdge_dcntel&#34; และมัลแวร์เทียบรายชื่อโปรเซสในเครื่องกับรายชื่อโปรแกรมด้านความปลอดภัยถึง 1,206 รายการ</p><p>AhnLab เผยแพร่ค่า SHA-256 ของไฟล์ติดตั้งของจริง 5 ค่า และของไฟล์อันตราย 17 ค่า ให้ผู้ใช้นำไปเทียบได้ พร้อมเตือนว่าผู้ที่ติดตั้งหรืออัปเดตเวอร์ชันอื่นในช่วงเวลาเดียวกันก็ควรตรวจสอบด้วย ส่วนไฟล์โปรแกรมจริงที่อยู่ข้างในยังมีลายเซ็นดิจิทัลที่ถูกต้องของผู้พัฒนา จึงดูน่าเชื่อถือมากขึ้น</p><p>AhnLab พบคอมเมนต์ภาษาจีนในซอร์สโค้ดของมัลแวร์ แต่ยังไม่ได้ระบุว่าเป็นฝีมือกลุ่มใด</p>
+  </section>
+  
+
+  <div class="two-col">
+    <section class="box">
+      <h2>👥 ใครได้รับผลกระทบ</h2>
+      <ul><li>ผู้ใช้ Windows ที่ดาวน์โหลดหรืออัปเดต Q-Dir หรือ DesktopOK ในช่วงที่ผ่านมา</li><li>โดยเฉพาะเวอร์ชัน Q-Dir 12.83–12.85 และ DesktopOK 12.82, 12.85</li><li>องค์กรที่ให้พนักงานติดตั้งโปรแกรมฟรีเหล่านี้ใช้เอง</li></ul>
+    </section>
+    <section class="box todo">
+      <h2>✅ ควรทำอย่างไร</h2>
+      <ul><li>ถ้าเพิ่งติดตั้งหรืออัปเดต Q-Dir/DesktopOK ให้ตรวจค่า SHA-256 ของไฟล์เทียบกับรายการในรายงานของ AhnLab</li><li>การถอนแล้วติดตั้งใหม่อย่างเดียวอาจไม่พอ ให้ตรวจหา Python ที่ไม่รู้ที่มา, Scheduled Task แปลก ๆ (โดยเฉพาะชื่อคล้าย MicrosoftEdge_dcntel) และการเชื่อมต่อออกไปยัง mail.c1a2[.]top หรือ 8.210.69[.]51</li><li>อัปเดตโปรแกรมป้องกันไวรัสให้ล่าสุด แล้วสแกนทั้งเครื่อง หากพบว่าติดมัลแวร์ให้แยกเครื่องออกจากเครือข่ายและเปลี่ยนรหัสผ่านสำคัญจากเครื่องอื่น</li><li>ฝ่ายไอทีควรบล็อกโดเมนและ IP ข้างต้นที่ไฟร์วอลล์ และจำกัดการติดตั้งโปรแกรมฟรีที่ไม่ผ่านการอนุมัติ</li></ul>
+    </section>
+  </div>
+
+  
+  <section>
+    <h2>📖 คำศัพท์น่ารู้</h2>
+    <dl class="glossary">
+      <dt>Supply chain attack</dt><dd>การโจมตีผ่านช่องทางที่เราไว้ใจ เช่น แอบใส่มัลแวร์ในไฟล์ของผู้พัฒนาจริง ผู้ใช้จึงไม่ทันระวัง</dd><dt>RAT</dt><dd>Remote Access Trojan มัลแวร์ที่ให้คนร้ายควบคุมคอมพิวเตอร์ของเหยื่อจากระยะไกล</dd><dt>SHA-256</dt><dd>ค่าลายนิ้วมือของไฟล์ ถ้าไฟล์ถูกแก้แม้นิดเดียว ค่านี้จะเปลี่ยนทันที</dd><dt>Scheduled Task</dt><dd>ระบบตั้งเวลาให้ Windows รันโปรแกรมอัตโนมัติ มัลแวร์มักใช้เพื่อเปิดตัวเองซ้ำ</dd>
+    </dl>
+  </section>
+  
+
+  <section class="refs">
+    <h2>แหล่งอ้างอิง</h2>
+    <ol>
+      <li><a href="https://thehackernews.com/2026/11/hackers-trojanize-official-q-dir-and.html" rel="noopener" target="_blank">Hackers Trojanize Official Q-Dir and DesktopOK Downloads to Deliver Remote Access Malware</a> <span class="src">The Hacker News (ข่าวต้นฉบับ)</span></li>
+      <li><a href="https://asec.ahnlab.com/en/96827/" rel="noopener" target="_blank">Software Supply Chain Attack via the Official SoftwareOK Website: Tampering with Q-Dir and DesktopOK Installation Files - ASEC</a> <span class="src">asec.ahnlab.com</span></li><li><a href="https://intel.threadlinqs.com/threat/TL-2026-6949" rel="noopener" target="_blank">Software Supply Chain Attack via Official SoftwareOK Website: Trojanized Q-Dir and DesktopOK Installers Deliver Python RAT - Threadlinqs</a> <span class="src">intel.threadlinqs.com</span></li>
+    </ol>
+    <p class="note">บทความนี้เรียบเรียงเป็นภาษาไทยโดยใช้ AI ช่วยจากแหล่งข่าวด้านบน โปรดตรวจสอบรายละเอียดจากแหล่งอ้างอิงก่อนนำไปใช้</p>
+  </section>
+</main>
+<footer class="site">© ข่าวไซเบอร์ง่ายๆ · <a href="../index.html">ข่าวทั้งหมด</a></footer>
+</body>
+</html>

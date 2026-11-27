@@ -204,24 +204,24 @@
       "at": "2026-11-27T01:48:48+00:00"
     },
     "https://thehackernews.com/2026/11/unpatched-cacti-zero-day-enables-rce-in.html": {
-      "status": "queued",
+      "status": "done",
       "slug": "2026-11-unpatched-cacti-zero-day-enables-rce-in",
-      "at": "2026-11-27T06:47:48+00:00"
+      "at": "2026-11-27T12:50:03+00:00"
     },
     "https://thehackernews.com/2026/11/switzerland-confirms-ai-assisted.html": {
-      "status": "queued",
+      "status": "done",
       "slug": "2026-11-switzerland-confirms-ai-assisted",
-      "at": "2026-11-27T06:47:48+00:00"
+      "at": "2026-11-27T12:50:03+00:00"
     },
     "https://thehackernews.com/2026/11/hackers-trojanize-official-q-dir-and.html": {
-      "status": "queued",
+      "status": "done",
       "slug": "2026-11-hackers-trojanize-official-q-dir-and",
-      "at": "2026-11-27T12:47:26+00:00"
+      "at": "2026-11-27T12:50:03+00:00"
     },
     "https://thehackernews.com/2026/11/how-to-keep-your-security-picture.html": {
-      "status": "queued",
+      "status": "done",
       "slug": "2026-11-how-to-keep-your-security-picture",
-      "at": "2026-11-27T12:47:26+00:00"
+      "at": "2026-11-27T12:50:03+00:00"
     }
   }
 }

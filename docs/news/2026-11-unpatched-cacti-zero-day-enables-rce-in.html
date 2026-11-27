@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ช่องโหว่ Zero-day ใน Cacti ยึดเซิร์ฟเวอร์ได้ด้วย 4 คำขอ หากเปิดบัญชี guest | ข่าวไซเบอร์ง่ายๆ</title>
+<meta name="description" content="นักวิจัยเปิดเผยวิธีเจาะโปรแกรมมอนิเตอร์เครือข่าย Cacti เวอร์ชันล่าสุด 1.2.31 ให้รันคำสั่งบนเซิร์ฟเวอร์ได้โดยไม่ต้องล็อกอิน แค่ส่งคำขอเว็บ 4 ครั้ง หากเปิดใช้บัญชี guest ไว้ ตอนนี้ยังไม่มีแพตช์">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ช่องโหว่ Zero-day ใน Cacti ยึดเซิร์ฟเวอร์ได้ด้วย 4 คำขอ หากเปิดบัญชี guest">
+<meta property="og:description" content="นักวิจัยเปิดเผยวิธีเจาะโปรแกรมมอนิเตอร์เครือข่าย Cacti เวอร์ชันล่าสุด 1.2.31 ให้รันคำสั่งบนเซิร์ฟเวอร์ได้โดยไม่ต้องล็อกอิน แค่ส่งคำขอเว็บ 4 ครั้ง หากเปิดใช้บัญชี guest ไว้ ตอนนี้ยังไม่มีแพตช์">
+<meta property="og:image" content="https://pakawatw.github.io/thai-cybersec-news/images/2026-11-unpatched-cacti-zero-day-enables-rce-in.png">
+<meta property="og:url" content="https://pakawatw.github.io/thai-cybersec-news/news/2026-11-unpatched-cacti-zero-day-enables-rce-in.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><a href="../index.html" class="brand">🛡️ ข่าวไซเบอร์ง่ายๆ</a></header>
+<main class="article">
+  <div class="meta">
+    <span class="sev sev-high">ความรุนแรงสูง</span>
+    <span class="date">27 พ.ย. 2569</span>
+    <span class="tag">ช่องโหว่</span><span class="tag">Zero-day</span><span class="tag">Cacti</span>
+  </div>
+  <h1>ช่องโหว่ Zero-day ใน Cacti ยึดเซิร์ฟเวอร์ได้ด้วย 4 คำขอ หากเปิดบัญชี guest</h1>
+
+  <section class="tldr">
+    <h2>สรุปสั้นๆ</h2>
+    <p>นักวิจัยเปิดเผยวิธีเจาะโปรแกรมมอนิเตอร์เครือข่าย Cacti เวอร์ชันล่าสุด 1.2.31 ให้รันคำสั่งบนเซิร์ฟเวอร์ได้โดยไม่ต้องล็อกอิน แค่ส่งคำขอเว็บ 4 ครั้ง หากเปิดใช้บัญชี guest ไว้ ตอนนี้ยังไม่มีแพตช์</p>
+  </section>
+
+  <img class="card" src="../images/2026-11-unpatched-cacti-zero-day-enables-rce-in.png" alt="ช่องโหว่ Zero-day ใน Cacti ยึดเซิร์ฟเวอร์ได้ด้วย 4 คำขอ หากเปิดบัญชี guest" width="1080" height="1080">
+
+  <section>
+    <h2>📰 เกิดอะไรขึ้น</h2>
+    <p>Cacti เป็นโปรแกรมโอเพนซอร์สยอดนิยมสำหรับดูกราฟและสถานะของอุปกรณ์เครือข่าย นักวิจัยที่ใช้ชื่อ &#34;ek0ms savi0r&#34; เผยแพร่โค้ดสาธิตการโจมตี (PoC) ชื่อ 4HTTP2SHELL และ 4HTTP2ROOT ซึ่งยังไม่มีหมายเลข CVE</p><p>ช่องโหว่นี้กระทบ Cacti 1.2.31 ซึ่งเป็นเวอร์ชันล่าสุด เมื่อเปิดใช้บัญชี guest (ผู้เยี่ยมชมแบบไม่ต้องล็อกอิน) คนร้ายใช้สิทธิ์ guest เขียนข้อความแปลกปลอมลงในค่าตั้ง &#34;จำนวนกราฟต่อหน้า&#34; ที่ควรเป็นตัวเลข แต่ Cacti ไม่ได้ตรวจสอบ</p><p>ข้อความนั้นกลายเป็นคำสั่ง SQL ที่ถูกรันเมื่อเปิดหน้าดูกราฟ คนร้ายใช้มันแก้ข้อมูลในตาราง poller แล้วเรียกหน้ากราฟแบบเรียลไทม์ ซึ่งจะนำค่าที่ถูกแก้ไปรันเป็นคำสั่งบนเซิร์ฟเวอร์ทันที</p><p>เมื่อยึด Cacti ได้ คนร้ายอาจเข้าถึงรหัสผ่านและข้อมูลการเชื่อมต่อของเราเตอร์ สวิตช์ และเซิร์ฟเวอร์อื่น ๆ ที่ Cacti เก็บไว้ ใช้เป็นฐานเจาะเครือข่ายต่อ หรือปิดการแจ้งเตือนเพื่อซ่อนตัว</p>
+  </section>
+
+  
+  <section>
+    <h2>🔎 ข้อมูลเพิ่มเติมจากแหล่งอื่น</h2>
+    <p>Threadlinqs ระบุว่าบัญชี guest ใน Cacti ปิดไว้เป็นค่าเริ่มต้น จึงกระทบเฉพาะระบบที่เปิดใช้เอง และการรันคำสั่งในระดับ root จะเกิดขึ้นได้เฉพาะเมื่อ Cacti ถูกรันด้วยสิทธิ์ root</p><p>Previdian ทดสอบซ้ำในห้องแล็บกับ Cacti 1.2.31 และยืนยันว่าโค้ดสาธิตใช้งานได้จริง ณ วันที่ 27 พ.ย. 2026 ยังไม่มีรายงานการโจมตีจริง และยังไม่มีแพตช์อย่างเป็นทางการ</p><p>คำแนะนำเพิ่มเติมคือให้รัน Cacti ด้วยบัญชีที่ไม่ใช่ root ตรวจตาราง settings_user และ poller_item และเปลี่ยนรหัสผ่านอุปกรณ์ที่เก็บไว้ใน Cacti หากสงสัยว่าถูกเจาะ</p>
+  </section>
+  
+
+  <div class="two-col">
+    <section class="box">
+      <h2>👥 ใครได้รับผลกระทบ</h2>
+      <ul><li>ผู้ดูแลระบบที่ใช้ Cacti 1.2.31 และเปิดบัญชี guest ไว้</li><li>องค์กรที่เปิดหน้าเว็บ Cacti ให้เข้าถึงได้จากอินเทอร์เน็ตหรือเครือข่ายกว้าง</li><li>อุปกรณ์เครือข่ายทั้งหมดที่ Cacti เก็บรหัสผ่านไว้ อาจถูกโจมตีต่อ</li></ul>
+    </section>
+    <section class="box todo">
+      <h2>✅ ควรทำอย่างไร</h2>
+      <ul><li>ปิดบัญชี guest ใน Cacti ทันที หากไม่จำเป็นต้องใช้</li><li>จำกัดการเข้าถึงหน้าเว็บ Cacti ให้เฉพาะเครือข่ายจัดการหรือผ่าน VPN เท่านั้น</li><li>ตรวจค่าตั้งใน poller ว่ามีคำสั่งแปลกปลอมหรือไม่ และรัน Cacti ด้วยบัญชีที่ไม่ใช่ root</li><li>ติดตามประกาศจากทีม Cacti และติดตั้งแพตช์ทันทีที่ออก</li><li>หากสงสัยว่าถูกเจาะ ให้เปลี่ยนรหัสผ่านของอุปกรณ์เครือข่ายทั้งหมดที่ Cacti เก็บไว้</li></ul>
+    </section>
+  </div>
+
+  
+  <section>
+    <h2>📖 คำศัพท์น่ารู้</h2>
+    <dl class="glossary">
+      <dt>Zero-day</dt><dd>ช่องโหว่ที่ถูกเปิดเผยหรือถูกใช้โจมตีก่อนที่ผู้พัฒนาจะออกแพตช์แก้</dd><dt>RCE</dt><dd>Remote Code Execution การที่คนร้ายสั่งรันคำสั่งบนเครื่องเหยื่อได้จากระยะไกล</dd><dt>SQL Injection</dt><dd>การแทรกคำสั่งฐานข้อมูลผ่านช่องกรอกข้อมูลที่ระบบไม่ได้ตรวจสอบ</dd><dt>PoC</dt><dd>Proof of Concept โค้ดตัวอย่างที่พิสูจน์ว่าช่องโหว่ใช้โจมตีได้จริง</dd>
+    </dl>
+  </section>
+  
+
+  <section class="refs">
+    <h2>แหล่งอ้างอิง</h2>
+    <ol>
+      <li><a href="https://thehackernews.com/2026/11/unpatched-cacti-zero-day-enables-rce-in.html" rel="noopener" target="_blank">Unpatched Cacti Zero-Day Enables RCE in Just Four HTTP Requests via Guest Access</a> <span class="src">The Hacker News (ข่าวต้นฉบับ)</span></li>
+      <li><a href="https://intel.threadlinqs.com/threat/TL-2026-6953" rel="noopener" target="_blank">Cacti 4HTTP2ROOT (4HTTP2SHELL) Zero-Day: Unauthenticated Command Execution via Stored Second-Order SQL Injection in Guest Profile Setting - Threadlinqs</a> <span class="src">intel.threadlinqs.com</span></li><li><a href="https://mallory.ai/stories/01a21b9c-40fa-74f2-934a-a092d4b8fd13" rel="noopener" target="_blank">Cacti Zero-Day Enables Unauthenticated RCE Through Guest Access in Four HTTP Requests - Mallory</a> <span class="src">mallory.ai</span></li>
+    </ol>
+    <p class="note">บทความนี้เรียบเรียงเป็นภาษาไทยโดยใช้ AI ช่วยจากแหล่งข่าวด้านบน โปรดตรวจสอบรายละเอียดจากแหล่งอ้างอิงก่อนนำไปใช้</p>
+  </section>
+</main>
+<footer class="site">© ข่าวไซเบอร์ง่ายๆ · <a href="../index.html">ข่าวทั้งหมด</a></footer>
+</body>
+</html>
