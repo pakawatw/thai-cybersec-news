@@ -1,0 +1,83 @@
+{
+  "title_th": "สรุปภัยไซเบอร์ประจำสัปดาห์: NGINX เสี่ยง 10 ล้านเครื่อง, ส่วนขยายเบราว์เซอร์แฝงตัว 250 ตัว",
+  "summary_th": "สรุปข่าวเด่นประจำสัปดาห์: เซิร์ฟเวอร์ NGINX กว่า 10 ล้านเครื่องเสี่ยงช่องโหว่ NGINX2Root, Microsoft พบส่วนขยายเบราว์เซอร์กว่า 250 ตัวที่เปลี่ยนพฤติกรรมเมื่อติดตั้งผ่านโฆษณา, Todoist ถูกเจาะข้อมูลผู้ใช้ 6% และเซิร์ฟเวอร์ AI ที่เปิดทิ้งไว้ถูกคนอื่นแอบใช้",
+  "severity": "high",
+  "tags": [
+    "สรุปข่าว",
+    "NGINX",
+    "ส่วนขยายเบราว์เซอร์",
+    "ข้อมูลรั่วไหล"
+  ],
+  "what_happened": [
+    "NGINX2Root: Censys พบบริการ NGINX ที่เปิดสู่อินเทอร์เน็ตกว่า 10 ล้านรายการใช้เวอร์ชันที่เปิด HTTP/2 และเสี่ยงต่อชุดช่องโหว่ NGINX2Root ซึ่งผู้โจมตีจากภายนอกโดยไม่ต้องล็อกอินอาจทำให้หน่วยความจำของ NGINX เสียหาย และนำไปสู่การรันโค้ดได้ในบางเงื่อนไข",
+    "SleeperWidget: ทีมความปลอดภัยส่วนขยายของ Microsoft Edge พบส่วนขยายกว่า 250 ตัวบน Edge, Chrome และ Firefox ที่ทำตัวเป็นแอปแผนที่ สูตรอาหาร หรือติดตามพัสดุ ใช้งานได้ปกติ แต่ถ้าติดตั้งผ่านโฆษณาบนเสิร์ชเอนจิน จะแอบเก็บข้อมูลการท่องเว็บ แทรกโฆษณา และเปลี่ยนลิงก์ช้อปปิ้ง",
+    "Todoist ถูกเจาะ: แฮกเกอร์ใช้ credential ที่ขโมยมาของระบบจัดการซอร์สโค้ด แก้ automated workflow เพื่อเอา credential เพิ่ม จนเข้าถึงระบบคลาวด์ได้ ข้อมูลของผู้ใช้ราว 6% ถูกดาวน์โหลด รวมถึงรหัสผ่านแบบ hash รุ่นเก่าของผู้ใช้ยุคแรก",
+    "เซิร์ฟเวอร์ AI ถูกแอบใช้: Rapid7 สำรวจเครื่องที่เปิดสู่อินเทอร์เน็ต 20,354 เครื่อง พบเซิร์ฟเวอร์ AI อย่าง Ollama จำนวนมากเปิดไว้โดยไม่มีการยืนยันตัวตน และกว่าครึ่งมีร่องรอยว่าคนอื่นเข้าไปใช้แล้ว เจ้าของอาจต้องจ่ายค่าบริการ AI แทนคนแปลกหน้า"
+  ],
+  "extra_details": [
+    "F5 ผู้พัฒนา NGINX ออกแพตช์แก้ชุดช่องโหว่ NGINX2Root (รวม 5 ช่องโหว่) แล้ว และมีรายงานว่าโค้ดสาธิตการโจมตี (PoC) ถูกเผยแพร่สู่สาธารณะ ผู้ดูแลระบบจึงควรอัปเดตโดยเร็ว",
+    "Todoist ออกประกาศเหตุการณ์ด้านความปลอดภัยเดือน พ.ย. 2026 อย่างเป็นทางการ ส่วน TechCrunch รายงานยืนยันว่าข้อมูลลูกค้าราว 6% ถูกขโมย",
+    "ในสรุปสัปดาห์นี้ยังมีข่าว CrowdStrike ประกาศซื้อ Zscaler มูลค่า 43,900 ล้านดอลลาร์ ซึ่งเป็นดีลซื้อกิจการด้านความปลอดภัยไซเบอร์ที่ใหญ่ที่สุดเท่าที่เคยมีมา"
+  ],
+  "who_affected": [
+    "ผู้ดูแลเว็บไซต์และเซิร์ฟเวอร์ที่ใช้ NGINX พร้อม HTTP/2",
+    "ผู้ใช้ Edge, Chrome และ Firefox ที่ติดตั้งส่วนขยายจากโฆษณา",
+    "ผู้ใช้ Todoist โดยเฉพาะบัญชีเก่าและบัญชีที่เชื่อมกับ Outlook",
+    "ผู้ที่ตั้งเซิร์ฟเวอร์ AI เช่น Ollama ไว้บนอินเทอร์เน็ต"
+  ],
+  "what_to_do": [
+    "อัปเดต NGINX เป็นเวอร์ชันที่แก้ไขแล้วตามประกาศของ F5 และตรวจว่าเปิด HTTP/2 ไว้ที่ไหนบ้าง",
+    "ตรวจส่วนขยายเบราว์เซอร์ที่ติดตั้งไว้ ลบตัวที่ไม่ได้ใช้หรือไม่แน่ใจที่มา และติดตั้งจากร้านค้าโดยตรงแทนการกดโฆษณา",
+    "ผู้ใช้ Todoist ควรเปลี่ยนรหัสผ่าน เปิด 2FA และตรวจการเชื่อมต่อกับแอปอื่น",
+    "อย่าเปิดเซิร์ฟเวอร์ AI สู่อินเทอร์เน็ตโดยไม่มีการยืนยันตัวตน ให้ใช้ไฟร์วอลล์หรือ VPN ครอบไว้"
+  ],
+  "glossary": [
+    {
+      "term": "NGINX",
+      "meaning": "ซอฟต์แวร์เว็บเซิร์ฟเวอร์ยอดนิยมที่เว็บไซต์จำนวนมากทั่วโลกใช้"
+    },
+    {
+      "term": "Browser Extension",
+      "meaning": "โปรแกรมเสริมที่ติดตั้งในเบราว์เซอร์ เพิ่มความสามารถ แต่ก็อ่านข้อมูลการท่องเว็บของเราได้"
+    },
+    {
+      "term": "LLMjacking",
+      "meaning": "การแอบใช้บริการหรือเซิร์ฟเวอร์ AI ของคนอื่น โดยเจ้าของเป็นคนจ่ายเงิน"
+    }
+  ],
+  "card_lines": [
+    "สรุปภัยไซเบอร์สัปดาห์นี้",
+    "NGINX เสี่ยง 10 ล้านเครื่อง",
+    "ส่วนขยายแฝงตัว 250 ตัว"
+  ],
+  "fb_caption": "📌 สรุปภัยไซเบอร์ประจำสัปดาห์ อ่านจบในนาทีเดียว\n\n🔹 NGINX กว่า 10 ล้านเครื่องเสี่ยงช่องโหว่ NGINX2Root อัปเดตด่วน\n🔹 ส่วนขยายเบราว์เซอร์ 250+ ตัวแอบเก็บข้อมูล ถ้าติดตั้งผ่านโฆษณา\n🔹 Todoist ถูกเจาะ ข้อมูลผู้ใช้ 6% หลุด",
+  "hashtags": [
+    "ข่าวไซเบอร์",
+    "NGINX",
+    "Todoist",
+    "สรุปข่าว"
+  ],
+  "references": [
+    {
+      "title": "NGINX2Root FAQ: Five vulnerabilities in NGINX - Tenable",
+      "url": "https://www.tenable.com/blog/nginx2root-cve-2026-123007-frequently-asked-questions-about-five-critical-nginx"
+    },
+    {
+      "title": "SleeperWidget: How Ad-Driven Installs Activate Hidden Browser Extension Behavior",
+      "url": "https://microsoftedge.github.io/edgevr/posts/SleeperWidget-How-Ad-Driven-Installs-Activate-Hidden-Browser-Extension-Behavior/"
+    },
+    {
+      "title": "Todoist: Security incident in November 2026",
+      "url": "https://www.todoist.com/help/todoist/get-started/security-incident-in-november-2026-cG0EIACNU"
+    },
+    {
+      "title": "Todoist confirms 6% of customers' details were stolen in data breach - TechCrunch",
+      "url": "https://techcrunch.com/2026/11/25/todoist-confirms-6-of-customers-details-were-stolen-in-data-breach/"
+    }
+  ],
+  "slug": "2026-11-threatsday-250-rogue-extensions-10m",
+  "source_url": "https://thehackernews.com/2026/11/threatsday-250-rogue-extensions-10m.html",
+  "source_title": "ThreatsDay: 10M NGINX Services at Risk, 250+ Malicious Extensions, AI Server Hijacking + 17 More Stories",
+  "published": "2026-11-26T19:39:57+00:00",
+  "created": "2026-11-27T01:48:48+00:00"
+}

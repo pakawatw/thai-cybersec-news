@@ -10,7 +10,7 @@ GitHub Actions (`fetch.yml`) has already queued new stories from The Hacker News
 2. List `data/queue/*.json`. If there are none, stop: there is nothing new. Process at most 8 per run, oldest first.
 3. For each queued story:
    1. Read its `article_text`. Do not try to fetch thehackernews.com, because the text is already there.
-   2. Use **WebSearch** to find 1 to 3 **other** reliable sources about the same event that add detail. Good sources are the vendor advisory, CISA/CERT alerts, NVD/CVE, the original researcher's blog, BleepingComputer, SecurityWeek and The Record, plus ThaiCERT or NCSA (สกมช.) when relevant. Only use URLs that actually appeared in your search results, and never thehackernews.com.
+   2. Use **WebSearch** to find 1 to 3 **other** reliable sources about the same event that add detail. Good sources are the vendor advisory, CISA/CERT alerts, NVD/CVE, the original researcher's blog, BleepingComputer, SecurityWeek and The Record, plus ThaiCERT or NCSA (สกมช.) when relevant. Only use URLs that actually appeared in your search results, and never thehackernews.com. If you have a page-reading tool (WebFetch or a web-fetch agent), read the best 1 or 2 of them for extra details. If you don't, use only facts from the article text and search results, and don't guess.
    3. Write `data/stories/<slug>.json` in the format below.
 4. Run `python scripts/news_writer.py finalize`. It checks each file, draws the image card, renders the site and removes the story from the queue. If it reports an error for a file, fix that file and run it again.
 5. Commit and push:

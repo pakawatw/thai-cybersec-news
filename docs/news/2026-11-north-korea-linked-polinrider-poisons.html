@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>แฮกเกอร์เกาหลีเหนือฝังมัลแวร์ใน GitHub กว่า 7,600 โปรเจกต์ | ข่าวไซเบอร์ง่ายๆ</title>
+<meta name="description" content="แคมเปญ PolinRider ที่เชื่อมโยงกับเกาหลีเหนือแอบฝังโค้ดอันตรายลงในโปรเจกต์บน GitHub กว่า 7,600 แห่ง แค่นักพัฒนาสั่ง build โปรเจกต์ หรือบางครั้งแค่เปิดโฟลเดอร์ใน VS Code มัลแวร์ก็ทำงานทันที เป้าหมายคือขโมยรหัสผ่าน คุกกี้ และกระเป๋าเงินคริปโต">
+<meta property="og:type" content="article">
+<meta property="og:title" content="แฮกเกอร์เกาหลีเหนือฝังมัลแวร์ใน GitHub กว่า 7,600 โปรเจกต์">
+<meta property="og:description" content="แคมเปญ PolinRider ที่เชื่อมโยงกับเกาหลีเหนือแอบฝังโค้ดอันตรายลงในโปรเจกต์บน GitHub กว่า 7,600 แห่ง แค่นักพัฒนาสั่ง build โปรเจกต์ หรือบางครั้งแค่เปิดโฟลเดอร์ใน VS Code มัลแวร์ก็ทำงานทันที เป้าหมายคือขโมยรหัสผ่าน คุกกี้ และกระเป๋าเงินคริปโต">
+<meta property="og:image" content="https://pakawatw.github.io/thai-cybersec-news/images/2026-11-north-korea-linked-polinrider-poisons.png">
+<meta property="og:url" content="https://pakawatw.github.io/thai-cybersec-news/news/2026-11-north-korea-linked-polinrider-poisons.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><a href="../index.html" class="brand">🛡️ ข่าวไซเบอร์ง่ายๆ</a></header>
+<main class="article">
+  <div class="meta">
+    <span class="sev sev-high">ความรุนแรงสูง</span>
+    <span class="date">26 พ.ย. 2569</span>
+    <span class="tag">Supply Chain</span><span class="tag">เกาหลีเหนือ</span><span class="tag">GitHub</span><span class="tag">มัลแวร์</span>
+  </div>
+  <h1>แฮกเกอร์เกาหลีเหนือฝังมัลแวร์ใน GitHub กว่า 7,600 โปรเจกต์</h1>
+
+  <section class="tldr">
+    <h2>สรุปสั้นๆ</h2>
+    <p>แคมเปญ PolinRider ที่เชื่อมโยงกับเกาหลีเหนือแอบฝังโค้ดอันตรายลงในโปรเจกต์บน GitHub กว่า 7,600 แห่ง แค่นักพัฒนาสั่ง build โปรเจกต์ หรือบางครั้งแค่เปิดโฟลเดอร์ใน VS Code มัลแวร์ก็ทำงานทันที เป้าหมายคือขโมยรหัสผ่าน คุกกี้ และกระเป๋าเงินคริปโต</p>
+  </section>
+
+  <img class="card" src="../images/2026-11-north-korea-linked-polinrider-poisons.png" alt="แฮกเกอร์เกาหลีเหนือฝังมัลแวร์ใน GitHub กว่า 7,600 โปรเจกต์" width="1080" height="1080">
+
+  <section>
+    <h2>📰 เกิดอะไรขึ้น</h2>
+    <p>นักวิจัยหลายทีมพบว่ากลุ่มแฮกเกอร์ที่เชื่อมโยงกับเกาหลีเหนือใช้แคมเปญชื่อ PolinRider แอบใส่โค้ดอันตรายที่เรียกว่า loader ลงในโปรเจกต์โอเพนซอร์สบน GitHub โดย Apiiro ประเมินว่ามีอย่างน้อย 7,609 repository จาก 2,330 บัญชีที่โดนแล้ว ส่วนใหญ่เป็นของนักพัฒนาทั่วไป และมีการฝังเพิ่มถึง 2,040 repository ในช่วง 27 ต.ค. ถึง 6 พ.ย. 2026 เพียงช่วงเดียว</p><p>วิธีที่แฮกเกอร์ใช้คือขโมย GitHub token จากเครื่องของนักพัฒนาที่ติดมัลแวร์อยู่แล้ว จากนั้นแก้ไข commit เดิมของเจ้าของโปรเจกต์ โดยคงชื่อผู้เขียน ข้อความ และวันที่ไว้เหมือนเดิม แล้วซ่อน loader ไว้หลังช่องว่างหลายร้อยตัวในไฟล์ตั้งค่า ทำให้ตรวจดูด้วยตาได้ยากมาก</p><p>จุดที่แยบยลคือ loader ไม่ได้เก็บที่อยู่เซิร์ฟเวอร์ควบคุม (C2) ไว้ในโค้ด แต่ไปอ่านจากธุรกรรมบนบล็อกเชน Ethereum แทน เทคนิคนี้ถูกเรียกว่า NullReceiver ต่อให้เซิร์ฟเวอร์ถูกปิด แฮกเกอร์ก็แค่ส่งธุรกรรมใหม่ครั้งเดียว loader ทุกตัวก็ย้ายไปเซิร์ฟเวอร์ใหม่ทันที</p><p>แคมเปญนี้ถูกมองว่าทำงานคู่ขนานกับ Contagious Interview ซึ่งหลอกนักพัฒนาด้วยการรับสมัครงานปลอม ให้ทำแบบทดสอบเขียนโค้ดหรือติดตั้ง &#34;ไดรเวอร์กล้อง&#34; ที่จริงคือมัลแวร์</p>
+  </section>
+
+  
+  <section>
+    <h2>🔎 ข้อมูลเพิ่มเติมจากแหล่งอื่น</h2>
+    <p>SafeDep รายงานว่ารอบล่าสุดแฮกเกอร์เปลี่ยนมาใช้ loader ภาษา Python ยาวประมาณ 58 บรรทัด ซ่อนอยู่ในแพ็กเกจ utils เล็กๆ หรือในไฟล์ conftest.py เมื่อ Python import ไฟล์นี้ มันจะอ่านธุรกรรมล่าสุดจากกระเป๋า Ethereum แล้วถอดออกมาเป็นโค้ด JavaScript ไปรันด้วย Node.js โดยพบใน 375 repository จาก 260 บัญชี และยังไม่พบหลักฐานว่าถูกเผยแพร่ผ่าน PyPI หรือ npm</p><p>StepSecurity พบว่าบัญชี GitHub ชื่อ Eternity0207 เปิด pull request กว่า 200 รายการไปยังโปรเจกต์อย่าง AsyncAPI Generator, CircuitVerse และ Open Food Facts แล้ว force-push โค้ดอันตรายเข้าไปค้างไว้ราว 30-40 นาทีก่อนลบออก ทำให้ผลต่าง (diff) สุดท้ายดูสะอาด บัญชีนี้ถูกระงับแล้ว</p><p>OpenSourceMalware พบหลักฐานว่าแคมเปญนี้อาจเริ่มตั้งแต่ ก.พ. 2025 โดยมีการยึดบัญชีผู้ดูแลแพ็กเกจ npm ตระกูล itsa-* แล้วปล่อยเวอร์ชันอันตราย 9 แพ็กเกจภายใน 90 นาที ซึ่งปล่อย backdoor ชื่อ InvisibleFerret</p>
+  </section>
+  
+
+  <div class="two-col">
+    <section class="box">
+      <h2>👥 ใครได้รับผลกระทบ</h2>
+      <ul><li>นักพัฒนาซอฟต์แวร์ที่ clone หรือ build โปรเจกต์โอเพนซอร์สจาก GitHub</li><li>เจ้าของ repository ที่เครื่องหรือ GitHub token ถูกขโมย</li><li>องค์กรที่นำโค้ดโอเพนซอร์สมาใช้ในระบบโดยไม่ตรวจสอบ</li><li>ผู้หางานสายไอทีที่ได้รับข้อเสนองานหรือแบบทดสอบเขียนโค้ดจากเว็บที่ไม่น่าเชื่อถือ</li></ul>
+    </section>
+    <section class="box todo">
+      <h2>✅ ควรทำอย่างไร</h2>
+      <ul><li>ตรวจไฟล์ conftest.py, โฟลเดอร์ utils, ไฟล์ตั้งค่า build และ .vscode/tasks.json ในโปรเจกต์ว่ามีโค้ดแปลกๆ หรือช่องว่างยาวผิดปกติหรือไม่</li><li>อย่าเปิดโปรเจกต์ที่ไม่รู้ที่มาใน VS Code โดยกด Trust ทันที ให้เปิดในโหมด Restricted Mode ก่อน</li><li>เปิดใช้ branch protection และห้าม force-push บน branch หลัก พร้อมตรวจประวัติ commit ที่ถูกแก้ย้อนหลัง</li><li>เปลี่ยน GitHub token และรหัสผ่านทันทีหากสงสัยว่าเครื่องติดมัลแวร์ และเปิดใช้ 2FA</li><li>ระวังการสมัครงานที่ให้รันโค้ด ติดตั้ง ‘ไดรเวอร์’ หรือคัดลอกคำสั่งไปวางใน Terminal</li></ul>
+    </section>
+  </div>
+
+  
+  <section>
+    <h2>📖 คำศัพท์น่ารู้</h2>
+    <dl class="glossary">
+      <dt>Supply Chain Attack</dt><dd>การโจมตีผ่านซอฟต์แวร์หรือโค้ดที่คนอื่นนำไปใช้ต่อ เหมือนวางยาที่ต้นน้ำแล้วคนปลายน้ำโดนหมด</dd><dt>Loader</dt><dd>โค้ดชิ้นเล็กที่มีหน้าที่ไปดาวน์โหลดมัลแวร์ตัวจริงมาติดตั้งต่อ</dd><dt>C2 (Command and Control)</dt><dd>เซิร์ฟเวอร์ที่แฮกเกอร์ใช้สั่งงานเครื่องที่ติดมัลแวร์</dd><dt>Force-push</dt><dd>การเขียนทับประวัติโค้ดใน Git ทำให้ซ่อนร่องรอยการแก้ไขได้</dd>
+    </dl>
+  </section>
+  
+
+  <section class="refs">
+    <h2>แหล่งอ้างอิง</h2>
+    <ol>
+      <li><a href="https://thehackernews.com/2026/11/north-korea-linked-polinrider-poisons.html" rel="noopener" target="_blank">North Korea-Linked PolinRider Poisons Over 7,600 GitHub Repositories to Spread Malware</a> <span class="src">The Hacker News (ข่าวต้นฉบับ)</span></li>
+      <li><a href="https://safedep.io/blog/polinrider-python-loader-ethereum-calldata" rel="noopener" target="_blank">PolinRider Moves to Python with an Ethereum Calldata Loader</a> <span class="src">safedep.io</span></li><li><a href="https://www.stepsecurity.io/blog/polinrider-malware-open-source-pull-requests" rel="noopener" target="_blank">PolinRider Malware Force-Pushed Into AsyncAPI, CircuitVerse and Open Food Facts Pull Requests - StepSecurity</a> <span class="src">stepsecurity.io</span></li><li><a href="https://opensourcemalware.com/blog/polinrider-jumps-the-fence" rel="noopener" target="_blank">PolinRider Jumps the Fence to Go, Packagist, npm, PyPI</a> <span class="src">opensourcemalware.com</span></li>
+    </ol>
+    <p class="note">บทความนี้เรียบเรียงเป็นภาษาไทยโดยใช้ AI ช่วยจากแหล่งข่าวด้านบน โปรดตรวจสอบรายละเอียดจากแหล่งอ้างอิงก่อนนำไปใช้</p>
+  </section>
+</main>
+<footer class="site">© ข่าวไซเบอร์ง่ายๆ · <a href="../index.html">ข่าวทั้งหมด</a></footer>
+</body>
+</html>
