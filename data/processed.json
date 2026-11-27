@@ -224,14 +224,14 @@
       "at": "2026-11-27T12:50:03+00:00"
     },
     "https://thehackernews.com/2026/11/microsoft-store-app-found-delivering.html": {
-      "status": "queued",
+      "status": "done",
       "slug": "2026-11-microsoft-store-app-found-delivering",
-      "at": "2026-11-27T18:47:15+00:00"
+      "at": "2026-11-27T18:49:38+00:00"
     },
     "https://thehackernews.com/2026/11/suspected-vietnam-linked-hackers-target.html": {
-      "status": "queued",
+      "status": "done",
       "slug": "2026-11-suspected-vietnam-linked-hackers-target",
-      "at": "2026-11-27T18:47:15+00:00"
+      "at": "2026-11-27T18:49:38+00:00"
     }
   }
 }
