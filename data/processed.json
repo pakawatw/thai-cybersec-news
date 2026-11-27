@@ -212,6 +212,16 @@
       "status": "queued",
       "slug": "2026-11-switzerland-confirms-ai-assisted",
       "at": "2026-11-27T06:47:48+00:00"
+    },
+    "https://thehackernews.com/2026/11/hackers-trojanize-official-q-dir-and.html": {
+      "status": "queued",
+      "slug": "2026-11-hackers-trojanize-official-q-dir-and",
+      "at": "2026-11-27T12:47:26+00:00"
+    },
+    "https://thehackernews.com/2026/11/how-to-keep-your-security-picture.html": {
+      "status": "queued",
+      "slug": "2026-11-how-to-keep-your-security-picture",
+      "at": "2026-11-27T12:47:26+00:00"
     }
   }
 }
