@@ -202,6 +202,16 @@
       "status": "done",
       "slug": "2026-11-threatsday-250-rogue-extensions-10m",
       "at": "2026-11-27T01:48:48+00:00"
+    },
+    "https://thehackernews.com/2026/11/unpatched-cacti-zero-day-enables-rce-in.html": {
+      "status": "queued",
+      "slug": "2026-11-unpatched-cacti-zero-day-enables-rce-in",
+      "at": "2026-11-27T06:47:48+00:00"
+    },
+    "https://thehackernews.com/2026/11/switzerland-confirms-ai-assisted.html": {
+      "status": "queued",
+      "slug": "2026-11-switzerland-confirms-ai-assisted",
+      "at": "2026-11-27T06:47:48+00:00"
     }
   }
 }
