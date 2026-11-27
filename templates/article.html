@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ s.title_th }} | {{ brand }}</title>
+<meta name="description" content="{{ s.summary_th }}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ s.title_th }}">
+<meta property="og:description" content="{{ s.summary_th }}">
+<meta property="og:image" content="{{ site }}/images/{{ s.slug }}.png">
+<meta property="og:url" content="{{ site }}/news/{{ s.slug }}.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><a href="../index.html" class="brand">🛡️ {{ brand }}</a></header>
+<main class="article">
+  <div class="meta">
+    <span class="sev sev-{{ s.severity }}">{{ sev_th }}</span>
+    <span class="date">{{ date_th }}</span>
+    {% for t in s.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+  </div>
+  <h1>{{ s.title_th }}</h1>
+
+  <section class="tldr">
+    <h2>สรุปสั้นๆ</h2>
+    <p>{{ s.summary_th }}</p>
+  </section>
+
+  <img class="card" src="../images/{{ s.slug }}.png" alt="{{ s.title_th }}" width="1080" height="1080">
+
+  <section>
+    <h2>📰 เกิดอะไรขึ้น</h2>
+    {% for p in s.what_happened %}<p>{{ p }}</p>{% endfor %}
+  </section>
+
+  {% if s.extra_details %}
+  <section>
+    <h2>🔎 ข้อมูลเพิ่มเติมจากแหล่งอื่น</h2>
+    {% for p in s.extra_details %}<p>{{ p }}</p>{% endfor %}
+  </section>
+  {% endif %}
+
+  <div class="two-col">
+    <section class="box">
+      <h2>👥 ใครได้รับผลกระทบ</h2>
+      <ul>{% for x in s.who_affected %}<li>{{ x }}</li>{% endfor %}</ul>
+    </section>
+    <section class="box todo">
+      <h2>✅ ควรทำอย่างไร</h2>
+      <ul>{% for x in s.what_to_do %}<li>{{ x }}</li>{% endfor %}</ul>
+    </section>
+  </div>
+
+  {% if s.glossary %}
+  <section>
+    <h2>📖 คำศัพท์น่ารู้</h2>
+    <dl class="glossary">
+      {% for g in s.glossary %}<dt>{{ g.term }}</dt><dd>{{ g.meaning }}</dd>{% endfor %}
+    </dl>
+  </section>
+  {% endif %}
+
+  <section class="refs">
+    <h2>แหล่งอ้างอิง</h2>
+    <ol>
+      <li><a href="{{ s.source_url }}" rel="noopener" target="_blank">{{ s.source_title }}</a> <span class="src">The Hacker News (ข่าวต้นฉบับ)</span></li>
+      {% for r in s.references %}<li><a href="{{ r.url }}" rel="noopener" target="_blank">{{ r.title }}</a> <span class="src">{{ r.url | domain }}</span></li>{% endfor %}
+    </ol>
+    <p class="note">บทความนี้เรียบเรียงเป็นภาษาไทยโดยใช้ AI ช่วยจากแหล่งข่าวด้านบน โปรดตรวจสอบรายละเอียดจากแหล่งอ้างอิงก่อนนำไปใช้</p>
+  </section>
+</main>
+<footer class="site">© {{ brand }} · <a href="../index.html">ข่าวทั้งหมด</a></footer>
+</body>
+</html>
