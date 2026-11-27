@@ -110,7 +110,9 @@ def create_draft_issue(story: dict) -> int:
 def cmd_queue() -> int:
     mode = os.environ.get("FB_MODE", "draft").strip().lower() or "draft"
     posts = load_json(FB_POSTS_FILE, {})
-    stories = sorted((load_json(p, {}) for p in STORIES.glob("*.json")), key=lambda s: s["published"])
+    from render import all_stories
+
+    stories = sorted(all_stories(), key=lambda s: s["published"])
     new = [s for s in stories if s["slug"] not in posts]
     print(f"FB mode: {mode}. Stories not yet handled: {len(new)}")
     if mode == "auto" and not fb_configured():

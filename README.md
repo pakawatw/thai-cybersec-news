@@ -1,9 +1,10 @@
 # ข่าวไซเบอร์ง่ายๆ (Thai cybersecurity news pipeline)
 
-Every 6 hours this repo checks [The Hacker News](https://thehackernews.com/) for new stories and, for each new one:
+This repo checks [The Hacker News](https://thehackernews.com/) for new stories and, for each new one:
 
-1. **Agent 1 – News writer** (`scripts/news_writer.py`)
-   - reads the RSS feed and skips stories it has already done (`data/processed.json`)
+1. **Agent 1 – News writer** (`scripts/news_writer.py` + a scheduled Claude task, see `AGENT_RUN.md`)
+   - every hour, GitHub Actions reads the RSS feed and queues stories it hasn't done yet (`data/queue/`, `data/processed.json`)
+   - every 6 hours, a scheduled Claude task (runs on your Claude plan, **no API key needed**) writes the queued stories
    - searches the web for 1–3 other sources (vendor advisories, CISA, NVD, researcher blogs…)
    - writes an easy Thai page: summary, what happened, extra details, who is affected, what to do, glossary, and **references at the bottom**
    - draws an original 1080×1080 image card with the Thai headline (no images copied from THN)
@@ -14,9 +15,10 @@ Every 6 hours this repo checks [The Hacker News](https://thehackernews.com/) for
    - **auto mode:** posts straight to the Facebook Page
 
 ```
-RSS ─► news_writer.py ─► data/stories/*.json ─► docs/news/*.html + docs/images/*.png ─► GitHub Pages
-                                     │
-                                     └─► fb_poster.py ─► GitHub Issue (draft) ─[label: approved]─► Facebook Page
+[hourly, GitHub]   RSS ─► news_writer.py fetch ─► data/queue/*.json
+[6-hourly, Claude] queue ─► web search + Thai writing ─► data/stories/*.json ─► news_writer.py finalize
+                          ─► docs/news/*.html + docs/images/*.png ─► GitHub Pages
+[on push, GitHub]  fb_poster.py ─► GitHub Issue (draft) ─[label: approved]─► Facebook Page
 ```
 
 ## One-time setup
@@ -25,9 +27,10 @@ RSS ─► news_writer.py ─► data/stories/*.json ─► docs/news/*.html + d
 Repo **Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: `main`, folder `/docs` → Save**.
 The site will be at `https://pakawatw.github.io/thai-cybersec-news/`.
 
-### 2. Add the Anthropic API key
-Create a key at <https://console.anthropic.com/settings/keys>, then in the repo go to
-**Settings → Secrets and variables → Actions → New repository secret**: name `ANTHROPIC_API_KEY`.
+### 2. Article writing (nothing to do)
+The Thai articles are written by a scheduled Claude task on your Claude account, so no API key is needed.
+*Alternative:* if you ever prefer an API key, add the secret `ANTHROPIC_API_KEY` and use the
+"Optional: write news with an API key" workflow.
 
 ### 3. Connect the Facebook Page
 You need a **Page access token** that never expires and has permission to post.
@@ -51,21 +54,23 @@ Your own account is an admin of the app, so posting works while the app stays in
 | `SITE_URL` | GitHub Pages URL | Set if you use a custom domain |
 
 ### 5. Run it
-**Actions → News every 6 hours → Run workflow.** The first run writes only the 3 newest stories (it doesn't backfill the whole feed). After that it runs at 07:17, 13:17, 19:17 and 01:17 Thai time.
+**Actions → Fetch new stories → Run workflow** queues stories right away (it also runs every hour by itself).
+The first run queues only the 3 newest stories (it doesn't backfill the whole feed).
 
 ## Running locally
 ```bash
 pip install -r requirements.txt
 export ANTHROPIC_API_KEY=...
-python scripts/news_writer.py --dry-run   # list new stories only
-python scripts/news_writer.py             # write pages
+python scripts/news_writer.py fetch       # queue new stories
+python scripts/news_writer.py finalize    # after writing data/stories/<slug>.json: cards + site
+python scripts/news_writer.py api         # all-in-one, needs ANTHROPIC_API_KEY
 python scripts/render.py                  # re-render the site after editing templates
 ```
 
 ## Cost
-Each story uses two Claude calls (research with web search, then writing). The Hacker News publishes about 5–10 stories a day. Set `MAX_PER_RUN` in the workflow to cap how many are written per run (default 8).
+GitHub Actions and Pages are free for public repos. The scheduled Claude task uses your Claude plan's usage; The Hacker News publishes about 5–10 stories a day and each run writes at most 8.
 
 ## Files
 - `scripts/` – pipeline code · `templates/` + `assets/style.css` – page design · `assets/fonts/` – Kanit font (SIL OFL)
-- `data/processed.json` – stories already seen · `data/stories/` – generated story content · `data/fb_posts.json` – Facebook status
+- `data/queue/` – stories waiting to be written · `data/processed.json` – stories already seen · `data/stories/` – generated story content · `data/fb_posts.json` – Facebook status
 - `docs/` – the published website

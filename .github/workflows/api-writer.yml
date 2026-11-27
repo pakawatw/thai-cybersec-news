@@ -1,8 +1,10 @@
-name: News every 6 hours
+name: "Optional: write news with an API key"
 
+# Only needed if you'd rather use an Anthropic API key than the scheduled Claude task.
+# To run it on a schedule, uncomment the two lines below and add the ANTHROPIC_API_KEY secret.
 on:
-  schedule:
-    - cron: "17 */6 * * *"   # 00:17, 06:17, 12:17, 18:17 UTC (07:17, 13:17, 19:17, 01:17 Thai time)
+  # schedule:
+  #   - cron: "17 */6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -30,7 +32,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           BRAND_NAME: ${{ vars.BRAND_NAME }}
           SITE_URL: ${{ vars.SITE_URL }}
-        run: python scripts/news_writer.py
+        run: python scripts/news_writer.py api
 
       - name: Commit new pages
         run: |

@@ -1,7 +1,15 @@
 """Agent 1: check The Hacker News RSS, write a Thai page + image card for each NEW story.
 
-Run:  python scripts/news_writer.py            (normal run)
-      python scripts/news_writer.py --dry-run  (list new stories, write nothing)
+Two ways to run it:
+
+A. Claude subscription (default, no API key):
+   python scripts/news_writer.py fetch      GitHub Actions: queue new stories in data/queue/
+   (scheduled Claude task writes data/stories/<slug>.json for each queued story, see AGENT_RUN.md)
+   python scripts/news_writer.py finalize   make image cards, render the site, clear the queue
+
+B. Anthropic API key (ANTHROPIC_API_KEY set):
+   python scripts/news_writer.py api        do everything in one go
+   python scripts/news_writer.py api --dry-run
 """
 from __future__ import annotations
 
@@ -15,8 +23,7 @@ import feedparser
 import requests
 from bs4 import BeautifulSoup
 
-import llm
-from common import DOCS, PROCESSED_FILE, STORIES, load_json, now_iso, save_json, slug_from_url
+from common import DATA, DOCS, PROCESSED_FILE, STORIES, load_json, now_iso, save_json, slug_from_url
 from image_card import make_card
 from render import render_site
 
@@ -64,7 +71,46 @@ def fetch_article_text(url: str, fallback: str) -> str:
     return fallback
 
 
+QUEUE = DATA / "queue"
+
+REQUIRED = {
+    "title_th": str, "summary_th": str, "severity": str, "tags": list, "what_happened": list,
+    "extra_details": list, "who_affected": list, "what_to_do": list, "glossary": list,
+    "card_lines": list, "fb_caption": str, "hashtags": list, "references": list,
+}
+
+
+def validate_story(s: dict) -> list[str]:
+    errs = [f"missing or wrong type: {k}" for k, t in REQUIRED.items() if not isinstance(s.get(k), t)]
+    if s.get("severity") not in ("low", "medium", "high", "critical"):
+        errs.append("severity must be low|medium|high|critical")
+    for g in s.get("glossary") or []:
+        if not (isinstance(g, dict) and g.get("term") and g.get("meaning")):
+            errs.append("glossary items need term and meaning")
+    for r in s.get("references") or []:
+        if not (isinstance(r, dict) and str(r.get("url", "")).startswith("http") and r.get("title")):
+            errs.append("references items need title and http(s) url")
+    if "thehackernews.com" in " ".join(r.get("url", "") for r in s.get("references") or [] if isinstance(r, dict)):
+        errs.append("references must be OTHER sources (the THN source is added automatically)")
+    return errs
+
+
+def new_items(state: dict, items: list[dict]) -> list[dict]:
+    seen = state["items"]
+    if not seen and FIRST_RUN_COUNT >= 0:
+        # First run: don't backfill the whole feed. Mark older stories as skipped.
+        for it in items[:-FIRST_RUN_COUNT] if FIRST_RUN_COUNT else items:
+            seen[it["url"]] = {"status": "skipped_backlog", "at": now_iso()}
+    return [
+        it for it in items
+        if seen.get(it["url"], {}).get("status") not in ("done", "skipped_backlog", "queued")
+        and seen.get(it["url"], {}).get("attempts", 0) < MAX_ATTEMPTS
+    ]
+
+
 def process(item: dict) -> dict:
+    import llm
+
     slug = slug_from_url(item["url"])
     print(f"→ {item['title']}  [{slug}]")
     text = fetch_article_text(item["url"], item["summary"])
@@ -85,34 +131,63 @@ def process(item: dict) -> dict:
     return story
 
 
-def main() -> int:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--dry-run", action="store_true")
-    args = ap.parse_args()
+def cmd_fetch() -> int:
+    state = load_json(PROCESSED_FILE, {"items": {}})
+    items = fetch_feed()
+    todo = new_items(state, items)
+    print(f"Feed has {len(items)} stories; {len(todo)} new")
+    for it in todo:
+        slug = slug_from_url(it["url"])
+        text = fetch_article_text(it["url"], it["summary"])
+        save_json(QUEUE / f"{slug}.json", {**it, "slug": slug, "article_text": text, "queued": now_iso()})
+        state["items"][it["url"]] = {"status": "queued", "slug": slug, "at": now_iso()}
+        print(f"  queued {slug}")
+    save_json(PROCESSED_FILE, state)
+    return 0
 
+
+def cmd_finalize() -> int:
+    """After Claude wrote data/stories/<slug>.json for queued items: cards, site, clear queue."""
+    state = load_json(PROCESSED_FILE, {"items": {}})
+    bad = 0
+    for q in sorted(QUEUE.glob("*.json")):
+        item = load_json(q, {})
+        sp = STORIES / f"{item['slug']}.json"
+        if not sp.exists():
+            print(f"  … not written yet: {item['slug']}")
+            continue
+        story = load_json(sp, {})
+        errs = validate_story(story)
+        if errs:
+            bad += 1
+            print(f"  ✗ {sp.name}: " + "; ".join(errs), file=sys.stderr)
+            continue
+        story.update(slug=item["slug"], source_url=item["url"], source_title=item["title"],
+                     published=item["published"], created=story.get("created") or now_iso())
+        save_json(sp, story)
+        make_card(story, DOCS / "images" / f"{item['slug']}.png")
+        state["items"][item["url"]] = {"status": "done", "slug": item["slug"], "at": now_iso()}
+        q.unlink()
+        print(f"  ✓ {item['slug']}: {story['title_th']}")
+    save_json(PROCESSED_FILE, state)
+    render_site()
+    return 1 if bad else 0
+
+
+def cmd_api(dry_run: bool) -> int:
     state = load_json(PROCESSED_FILE, {"items": {}})
     seen = state["items"]
     items = fetch_feed()
-    print(f"Feed has {len(items)} stories")
-
-    if not seen and FIRST_RUN_COUNT >= 0:
-        # First run: don't backfill the whole feed. Mark older stories as skipped.
-        for it in items[:-FIRST_RUN_COUNT] if FIRST_RUN_COUNT else items:
-            seen[it["url"]] = {"status": "skipped_backlog", "at": now_iso()}
-
-    todo = [
-        it for it in items
-        if seen.get(it["url"], {}).get("status") not in ("done", "skipped_backlog")
-        and seen.get(it["url"], {}).get("attempts", 0) < MAX_ATTEMPTS
-    ][:MAX_PER_RUN]
-    print(f"New stories to process: {len(todo)}")
-    if args.dry_run:
+    todo = new_items(state, items)[:MAX_PER_RUN]
+    print(f"Feed has {len(items)} stories; processing {len(todo)}")
+    if dry_run:
         for it in todo:
             print(" -", it["title"], it["url"])
         return 0
     if todo and not os.environ.get("ANTHROPIC_API_KEY"):
         print("ANTHROPIC_API_KEY is not set. Add it under Settings → Secrets and variables → Actions.", file=sys.stderr)
         return 1
+    import anthropic
 
     errors = 0
     for it in todo:
@@ -121,7 +196,7 @@ def main() -> int:
         try:
             story = process(it)
             seen[it["url"]] = {"status": "done", "slug": story["slug"], "at": now_iso()}
-        except (llm.anthropic.AuthenticationError, llm.anthropic.PermissionDeniedError) as e:
+        except (anthropic.AuthenticationError, anthropic.PermissionDeniedError) as e:
             rec["attempts"] -= 1  # not the story's fault; don't use up its retries
             save_json(PROCESSED_FILE, state)
             print(f"Anthropic API key problem: {e}", file=sys.stderr)
@@ -131,11 +206,24 @@ def main() -> int:
             rec.update(status="failed", error=f"{type(e).__name__}: {e}"[:300], at=now_iso())
             print(f"  ✗ failed: {e}", file=sys.stderr)
         save_json(PROCESSED_FILE, state)  # save after each story so progress survives crashes
-
-    save_json(PROCESSED_FILE, state)
     render_site()
     print(f"Done. {len(todo) - errors} written, {errors} failed.")
     return 0
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    sub.add_parser("fetch")
+    sub.add_parser("finalize")
+    a = sub.add_parser("api")
+    a.add_argument("--dry-run", action="store_true")
+    args = ap.parse_args()
+    if args.cmd == "fetch":
+        return cmd_fetch()
+    if args.cmd == "finalize":
+        return cmd_finalize()
+    return cmd_api(args.dry_run)
 
 
 if __name__ == "__main__":

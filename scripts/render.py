@@ -13,7 +13,8 @@ env.filters["domain"] = lambda u: urlparse(u).netloc.removeprefix("www.")
 
 
 def all_stories() -> list[dict]:
-    stories = [load_json(p, {}) for p in STORIES.glob("*.json")]
+    # only finalized stories (finalize adds slug/published after validation)
+    stories = [s for s in (load_json(p, {}) for p in STORIES.glob("*.json")) if s.get("slug") and s.get("published")]
     return sorted(stories, key=lambda s: s.get("published", ""), reverse=True)
 
 

@@ -1,0 +1,47 @@
+name: Facebook drafts for new stories
+
+# Runs when new stories are pushed (by the scheduled Claude task) and makes
+# a Facebook draft issue for each one (or posts directly when FB_MODE=auto).
+on:
+  push:
+    branches: [main]
+    paths: ["data/stories/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: repo-writer
+  cancel-in-progress: false
+
+jobs:
+  facebook:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: "Agent 2: Facebook drafts or posts"
+        env:
+          FB_MODE: ${{ vars.FB_MODE }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: python scripts/fb_poster.py queue
+      - name: Commit Facebook status
+        if: always()
+        run: |
+          git config user.name "news-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data
+          git diff --cached --quiet && exit 0
+          git commit -m "Facebook status update"
+          git pull --rebase
+          git push
