@@ -6,7 +6,11 @@ GitHub Actions (`fetch.yml`) has already queued new stories from The Hacker News
 
 ## Steps
 
-1. `cd` into the repo, then `git pull --rebase origin main` and `pip install -q -r requirements.txt`.
+1. `cd` into the repo and run `pip install -q -r requirements.txt`. Then refresh the queue yourself, because GitHub's hourly schedule is best-effort and sometimes doesn't fire:
+   `gh workflow run fetch.yml -R pakawatw/thai-cybersec-news --ref main`, wait about 10 seconds, find the new run with
+   `gh run list -R pakawatw/thai-cybersec-news --workflow fetch.yml --limit 1 --json databaseId --jq '.[0].databaseId'`,
+   then `gh run watch <id> -R pakawatw/thai-cybersec-news --exit-status`. If `gh` fails, use the GitHub tools to run the `fetch.yml` workflow on `main` and wait for it to finish. If that fails too, carry on with whatever is already queued.
+   Finally, run `git pull --rebase origin main`.
 2. List `data/queue/*.json`. If there are none, stop: there is nothing new. Process at most 8 per run, oldest first.
 3. For each queued story:
    1. Read its `article_text`. Do not try to fetch thehackernews.com, because the text is already there.
