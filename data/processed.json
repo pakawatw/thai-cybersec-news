@@ -1,0 +1,207 @@
+{
+  "items": {
+    "https://thehackernews.com/2026/11/new-unpatched-windows-0-day-fastunlock.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/romulus-clickfix-attacks-deliver-rat.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/china-linked-hackers-exploit-critical.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/hackers-exploit-critical-cisco.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/sonicwall-warns-gen-6-firewalls-wont.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/the-path-to-ai-autonomy-in-soc.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/new-linux-kvm-flaw-cve-2026-99312-lets.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/bazuka-android-malware-uses-fake-screen.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/whatsapp-patches-3-security-flaws.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/hackers-exploit-critical-vmware-cisco.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/signal-blocks-ai-agents-from-reading.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/attackers-ai-agents-found-zero-day-in.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/gnupg-warns-critical-gpgme-flaw-could.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/a-single-malicious-webpage-let.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/researchers-demonstrate-ghostscript.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/openrouter-drops-3-providers-after.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/ai-assisted-cyberattacks-trigger.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/hackers-exploited-glinet-cloud-flaw-to.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/hackers-exploit-critical-aspnet-anti.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/n-able-discloses-critical-mail-assure.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/hackers-exploit-critical-screenconnect.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/critical-binary-parser-flaw-enables.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/weekly-recap-vmware-0-day-java4shell.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/webworm-suspected-of-modifying.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/hackers-exploit-n-able-mailassure-flaw.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/openai-and-cisco-unveil-ai-assisted.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/whmcs-sql-injection-flaw-could-expose.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/microsoft-fixes-azure-api-management.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/2027-soc-budget-reset-5-priorities-to.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/google-researcher-shows-how-single-bit.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/hackers-found-way-around-github-sha.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/okta-links-shinyhunters-associated.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/vmware-vcenter-hit-by-another-critical.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/iran-aligned-volant-manticore-uses-ipfs.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/wordpress-blocks-six-backdoored-wp.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/com-affiliated-hackers-hijack-cloud.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/hackers-compromise-24-check-point.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/hackers-exploited-cvss-100-hexpm-rce.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/ex-openai-employee-accused-of-bugging.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/drupal-fail2install-exploit-details.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/credential-remediation-is-slow-when-you.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/us-treasurys-fincen-takes-some-systems.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/hackers-exploit-two-geoserver-flaws-as.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/13-malicious-nuget-packages-turn-fake.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/hackers-exploit-10-vulnerabilities.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/drupal-warns-of-new-highly-critical.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/1password-hacked-customer-data-and.html": {
+      "status": "skipped_backlog",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/most-wanted-phishing-kits-and.html": {
+      "status": "queued",
+      "slug": "2026-11-most-wanted-phishing-kits-and",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/north-korea-linked-polinrider-poisons.html": {
+      "status": "queued",
+      "slug": "2026-11-north-korea-linked-polinrider-poisons",
+      "at": "2026-11-27T01:46:59+00:00"
+    },
+    "https://thehackernews.com/2026/11/threatsday-250-rogue-extensions-10m.html": {
+      "status": "queued",
+      "slug": "2026-11-threatsday-250-rogue-extensions-10m",
+      "at": "2026-11-27T01:46:59+00:00"
+    }
+  }
+}
