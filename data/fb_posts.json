@@ -13,5 +13,25 @@
     "status": "awaiting_approval",
     "issue": 3,
     "at": "2026-11-27T01:49:24+00:00"
+  },
+  "2026-11-unpatched-cacti-zero-day-enables-rce-in": {
+    "status": "awaiting_approval",
+    "issue": 4,
+    "at": "2026-11-27T12:50:31+00:00"
+  },
+  "2026-11-switzerland-confirms-ai-assisted": {
+    "status": "awaiting_approval",
+    "issue": 5,
+    "at": "2026-11-27T12:50:32+00:00"
+  },
+  "2026-11-hackers-trojanize-official-q-dir-and": {
+    "status": "awaiting_approval",
+    "issue": 6,
+    "at": "2026-11-27T12:50:33+00:00"
+  },
+  "2026-11-how-to-keep-your-security-picture": {
+    "status": "awaiting_approval",
+    "issue": 7,
+    "at": "2026-11-27T12:50:33+00:00"
   }
 }
