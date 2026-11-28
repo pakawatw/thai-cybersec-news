@@ -43,5 +43,10 @@
     "status": "awaiting_approval",
     "issue": 9,
     "at": "2026-11-27T18:50:08+00:00"
+  },
+  "2026-11-pcloud-password-manager-hit-by-cyber": {
+    "status": "awaiting_approval",
+    "issue": 10,
+    "at": "2026-11-28T12:49:09+00:00"
   }
 }
